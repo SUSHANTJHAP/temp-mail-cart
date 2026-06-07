@@ -1,0 +1,485 @@
+/* ===== TempMail Cart – Higgsfield Yellow-Green Theme ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --primary:        #c8f400;
+  --primary-dark:   #a3c800;
+  --primary-glow:   rgba(200, 244, 0, 0.30);
+  --accent:         #d4ff1a;
+  --accent-glow:    rgba(212, 255, 26, 0.22);
+  --bg-base:        #0d0e0b;
+  --bg-card:        rgba(17, 19, 13, 0.88);
+  --bg-card-hover:  rgba(25, 28, 18, 0.96);
+  --border:         rgba(200, 244, 0, 0.14);
+  --border-hover:   rgba(200, 244, 0, 0.42);
+  --text-primary:   #eef0e6;
+  --text-secondary: #7e8868;
+  --text-muted:     #464e36;
+  --success:        #7ecb40;
+  --warning:        #f59e0b;
+  --danger:         #ef4444;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(200, 244, 0, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(180, 230, 0, 0.05) 0%, transparent 60%);
+  background-attachment: fixed;
+}
+
+/* ===== Glassmorphism Card ===== */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 30px var(--primary-glow);
+}
+
+/* ===== Email Display ===== */
+.email-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  background: rgba(200, 244, 0, 0.06);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  word-break: break-all;
+  transition: all 0.3s ease;
+}
+
+.email-display:hover {
+  background: rgba(200, 244, 0, 0.10);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--primary-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover {
+  background: rgba(200, 244, 0, 0.1);
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+/* ===== Inbox Items ===== */
+.inbox-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(200, 244, 0, 0.10);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  animation: slideInUp 0.3s ease forwards;
+}
+
+.inbox-item:hover {
+  background: rgba(200, 244, 0, 0.07);
+  border-color: var(--border-hover);
+  transform: translateX(4px);
+}
+
+.inbox-item.unread {
+  border-left: 3px solid var(--accent);
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Pulse / Loading ===== */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+  50% { opacity: 0.8; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(16,185,129,0); }
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-box {
+  background: #111309;
+  border: 1px solid var(--border-hover);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 760px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 40px var(--primary-glow);
+}
+
+.modal-backdrop.active .modal-box {
+  transform: scale(1) translateY(0);
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 3px;
+}
+
+/* ===== Ad Slots ===== */
+.ad-slot {
+  background: linear-gradient(135deg, rgba(20,24,12,0.7), rgba(14,16,9,0.9));
+  border: 1px dashed rgba(200,244,0,0.18);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200,244,0,0.03), rgba(180,220,0,0.02));
+}
+
+.ad-slot-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* ===== FAQ Accordion ===== */
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: var(--border-hover);
+}
+
+.faq-question {
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  background: rgba(200,244,0,0.04);
+  transition: background 0.2s ease;
+  gap: 12px;
+}
+
+.faq-question:hover {
+  background: rgba(200,244,0,0.08);
+}
+
+.faq-chevron {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: var(--primary);
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 20px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 16px 20px;
+}
+
+/* ===== SEO Content Section ===== */
+.content-section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--text-primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.content-section p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.content-section ul li {
+  color: var(--text-secondary);
+  padding: 4px 0;
+  padding-left: 8px;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* ===== Countdown Badge ===== */
+.countdown-badge {
+  background: rgba(16,185,129,0.15);
+  border: 1px solid rgba(16,185,129,0.3);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  color: var(--success);
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===== Toast Notification ===== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: rgba(16,185,129,0.95);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 9999;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== Scrollbar (global) ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 4px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .ad-slot-header { height: 60px !important; }
+  .sidebar-col { display: none; }
+}
+
+@media (max-width: 480px) {
+  .btn-primary, .btn-secondary { padding: 10px 16px; font-size: 0.85rem; }
+}
+
+/* ===== Nav ===== */
+nav a {
+  transition: color 0.2s ease;
+}
+nav a:hover {
+  color: var(--accent) !important;
+}
+
+/* ===== Compliance Pages ===== */
+.compliance-content h1 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
+.compliance-content h2 { font-size: 1.3rem; font-weight: 700; margin: 28px 0 10px; color: var(--accent); }
+.compliance-content p, .compliance-content li { color: var(--text-secondary); line-height: 1.8; margin-bottom: 10px; font-size: 0.95rem; }
+.compliance-content ul { list-style: disc; padding-left: 24px; margin-bottom: 16px; }
+
+/* ===== OTP Copy Buttons ===== */
+.btn-otp-copy-inbox {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-otp-copy-inbox:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--success);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-otp-copy-inbox:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.btn-otp-copy-modal {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-otp-copy-modal:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: var(--success);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-otp-copy-modal:active {
+  transform: translateY(0) scale(0.96);
+}

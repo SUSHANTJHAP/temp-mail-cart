@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TempMail Cart — Free Temp Mail, Temporary Mail & Burner Email Address</title>
+  <link rel="icon" type="image/png" href="/static/tempmail_cart_icon.png" />
+  <meta name="description" content="Get a free temporary mail or throwaway email instantly. TempMail Cart is the ultimate 10 minute mail, disposable mail, and temp mailbox generator. Protect your inbox with a secure burner email address. Auto-refreshes every 7 seconds!" />
+  <meta name="keywords" content="temp mail, temporary mail, throwaway email, disposable mail, temp mailbox, 10 minute mail, burner email address, temporary email, anonymous email, disposable email generator" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="TempMail Cart â€” Free Temp Mail & Burner Email Address" />
+  <meta property="og:description" content="Instant, anonymous, disposable email addresses. No signup. Use our temp mail and burner email generator. Inbox auto-refreshes every 7 seconds." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://tempmailcart.com/" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/static/css/style.css?v=1.0.3" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c8f400',
+            accent: '#d4ff1a',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     NAVIGATION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<nav class="sticky top-0 z-50 border-b border-lime-900/20" style="background:rgba(11,13,8,0.88);backdrop-filter:blur(20px)">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 no-underline">
+      <img src="/static/tempmail_cart_icon.png" alt="TempMail Cart Logo" style="width:32px;height:32px;border-radius:8px;object-fit:cover;" />
+      <span class="font-bold text-lg" style="color:var(--text-primary)">TempMail <span style="color:var(--accent)">Cart</span></span>
+    </a>
+    <div class="flex items-center gap-4 text-sm" style="color:var(--text-secondary)">
+      <a href="/about" class="hover:text-primary transition-colors">About</a>
+      <a href="/privacy" class="hover:text-primary transition-colors">Privacy</a>
+      <a href="/terms" class="hover:text-primary transition-colors">Terms</a>
+      <div class="flex items-center gap-2">
+        <div class="pulse-dot" id="status-dot"></div>
+        <span id="status-text" style="font-size:0.75rem">Initializing…</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     AD SLOT â€” HEADER BANNER (728Ã—90 / responsive)
+     80px margin from any action button â€” AdSense compliant
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div class="max-w-7xl mx-auto px-4 mt-6">
+  <div id="ad-header-banner" class="ad-slot w-full" style="height:90px;min-height:60px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span class="ad-slot-label">Advertisement Â· 728Ã—90</span>
+    <!-- Replace with your Google AdSense code:
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+  </div>
+</div>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     HERO â€” EMAIL GENERATOR CARD
+     (80px+ padding-top separates it from the header ad above)
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<main>
+  <section class="max-w-7xl mx-auto px-4" style="padding-top:80px;padding-bottom:40px">
+    <div class="text-center mb-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4" style="background:linear-gradient(135deg,#eef0e6,#c8f400);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2">
+        Free Temp Mail &<br/>Burner Email Address
+      </h1>
+      <p style="color:var(--text-secondary);font-size:1.1rem;max-width:600px;margin:0 auto 30px">
+        The ultimate temporary mail shield built securely inside your TempMailCart dashboard.
+      </p>
+    </div>
+
+    <!-- Two-column layout: main + sidebar -->
+    <div class="flex gap-6 items-start">
+      <!-- â”€â”€ Main Column â”€â”€ -->
+      <div class="flex-1 min-w-0 space-y-4">
+
+        <!-- Email Card -->
+        <div class="glass-card p-6">
+          <label style="font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em" for="email-display">
+            Your Disposable Email Address
+          </label>
+          <div id="email-display" class="email-display mt-3 mb-5" role="textbox" aria-readonly="true" aria-label="Generated disposable email address">
+            Generating your addressâ€¦
+          </div>
+
+          <!-- Action buttons â€” 80px margin-top from ad slot above -->
+          <div class="flex flex-wrap gap-3">
+            <button id="btn-copy" class="btn-primary" aria-label="Copy email address to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy
+            </button>
+            <button id="btn-refresh" class="btn-secondary" aria-label="Generate a new disposable email address">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              New Email
+            </button>
+            <div class="countdown-badge ml-auto" aria-live="polite" aria-label="Next inbox check countdown">
+              <div class="pulse-dot" style="width:6px;height:6px"></div>
+              Checking in <span id="countdown-timer">7s</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inbox Card -->
+        <div class="glass-card p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <h2 class="text-base font-bold" style="color:var(--text-primary)">
+                Inbox
+                <span id="inbox-count" style="background:rgba(200,244,0,0.15);color:var(--primary);border-radius:20px;padding:2px 10px;font-size:0.75rem;margin-left:8px;font-weight:700">0</span>
+              </h2>
+              <button id="btn-refresh-inbox" class="btn-secondary" aria-label="Refresh Inbox">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                Refresh
+              </button>
+            </div>
+            <span style="font-size:0.75rem;color:var(--text-muted)">Auto-refresh Â· 7s</span>
+          </div>
+
+          <!-- Empty state -->
+          <div id="inbox-empty" style="text-align:center;padding:40px 20px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 12px;opacity:0.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <p style="color:var(--text-muted);font-size:0.85rem">Waiting for emailsâ€¦ Copy your address above and use it anywhere.</p>
+          </div>
+
+          <!-- Message list -->
+          <div id="inbox-list" role="list" aria-label="Email inbox messages"></div>
+        </div>
+
+      </div>
+
+      <!-- â”€â”€ Sidebar Ad Slot (300Ã—250) â”€â”€ -->
+      <aside class="sidebar-col flex-shrink-0" style="width:300px">
+        <div id="ad-sidebar" class="ad-slot sticky top-24" style="height:250px;width:300px;border-radius:12px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.3"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span class="ad-slot-label">Sidebar Ad Â· 300Ã—250</span>
+          <!-- Replace with AdSense:
+          <ins class="adsbygoogle" style="display:block;width:300px;height:250px" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+               data-ad-slot="XXXXXXXXXX"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          -->
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       SEO CONTENT â€” 800+ words for AdSense Thin Content compliance
+  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+  <section class="max-w-4xl mx-auto px-4 py-12 content-section">
+
+    <!-- Section 1 -->
+    <div class="glass-card p-8 mb-6">
+      <h2>What Is a Temp Mail & Disposable Mail Service?</h2>
+      <p>
+        A <strong>temp mail</strong> service â€” also referred to as a temporary mail, disposable mail, throwaway email, burner email address, or temp mailbox â€” is a short-lived email address you create on-demand, use for a specific purpose, and discard afterward. Unlike your permanent personal or professional inbox, a temporary address carries no identity, no history, and no obligation. Once you're done with it, it simply ceases to exist.
+      </p>
+      <p>
+        The concept arose in the early 2000s as internet marketers began requiring email registration for access to content, downloads, newsletters, and online forums. Users quickly realised that handing over a real address meant consenting to an indefinite stream of promotional messages, security risks, and data broker re-selling. Disposable email services offered a clean alternative: a fully functional temp mailbox that exists purely for a single interaction.
+      </p>
+      <p>
+        TempMail Cart generates your burner email address in under a second by connecting to a trusted underlying mail infrastructure. The address is real â€” it can receive emails from any sender on the internet â€” but it's completely anonymous. No name, no phone number, no credit card, and no account password are ever collected from you. When you close the browser or request a new address, the old one is simply abandoned.
+      </p>
+      <p>
+        Modern disposable email services power millions of daily interactions: verifying new social media accounts, downloading software trials, accessing gated research papers, signing up for coupon services, testing web applications in development, and much more. They are a practical, legitimate tool for managing your digital privacy hygiene.
+      </p>
+    </div>
+
+    <!-- AD SLOT â€” MIDPAGE BANNER -->
+    <div id="ad-midpage" class="ad-slot w-full mb-6" style="height:90px;min-height:60px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span class="ad-slot-label">Advertisement Â· 728Ã—90 Midpage</span>
+      <!-- Replace with AdSense code:
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      -->
+    </div>
+
+    <!-- Section 2 -->
+    <div class="glass-card p-8 mb-6">
+      <h2>Why Use a Temporary Mail & Burner Email Address?</h2>
+      <p>
+        There are dozens of everyday situations where using your real email address creates more problems than it solves. A burner email address, temp mailbox, or throwaway email generator like TempMail Cart solves all of them cleanly, without compromise. Using our premium 10 minute mail tool provides:
+      </p>
+
+      <p><strong style="color:var(--accent)">1. Stop Spam Before It Starts</strong></p>
+      <p>
+        The average internet user receives over 120 emails per day, with studies estimating that more than 45% of all email traffic worldwide is spam. Every time you hand your real address to a new website, you increase your exposure. A disposable address acts as a firewall: the unwanted traffic goes to the throwaway inbox, and your real inbox stays clean. You get what you need from the service, and you never have to unsubscribe from anything.
+      </p>
+
+      <p><strong style="color:var(--accent)">2. Protect Your Personal Privacy</strong></p>
+      <p>
+        Data brokers, advertising networks, and even legitimate companies routinely sell or share email lists. Once your real address is in their systems, it's nearly impossible to scrub. Disposable emails keep your identity compartmentalised: the service you sign up for knows nothing about you beyond a temporary address that vanishes. This is especially important when testing unfamiliar services or signing up for platforms in countries with weak privacy laws.
+      </p>
+
+      <p><strong style="color:var(--accent)">3. Simplify Developer & QA Testing</strong></p>
+      <p>
+        Software developers and quality-assurance engineers frequently need to test registration flows, welcome emails, password-reset journeys, and transactional notifications. Using production addresses or team shared inboxes is messy and risky. TempMail Cart provides an instant, isolated inbox for each test run, with real-time delivery â€” no special configuration required.
+      </p>
+
+      <p><strong style="color:var(--accent)">4. Avoid Forced Account Creation</strong></p>
+      <p>
+        Many websites hide free content, white-papers, or discount codes behind mandatory registration walls. You shouldn't have to sacrifice your inbox for a single article. A temporary address lets you access gated content immediately, with zero ongoing commitment.
+      </p>
+
+      <p><strong style="color:var(--accent)">5. Safe Online Shopping & Coupons</strong></p>
+      <p>
+        Coupon and deal sites are notorious spam senders. Sign up with a disposable address, grab your discount code, and let the follow-up marketing flood into a void. Your real inbox never sees a single promotional email.
+      </p>
+
+      <p><strong style="color:var(--accent)">6. Social Media & Forum Verification</strong></p>
+      <p>
+        Whether you're trying out a new social platform, creating a pseudonymous forum account, or testing a community feature, a disposable email gets you through the verification step without linking the activity to your real identity.
+      </p>
+    </div>
+
+    <!-- Section 3 â€” FAQ -->
+    <div class="glass-card p-8 mb-6">
+      <h2 class="mb-6">Frequently Asked Questions</h2>
+
+      <div class="space-y-3">
+
+        <!-- FAQ 1 -->
+        <div class="faq-item" id="faq-1">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-1">
+            <span>How long does a temp mail, 10 minute mail, or burner email address last?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer" id="faq-answer-1" role="region">
+            Temporary mail addresses generated through TempMail Cart are powered by the 1secmail service, which keeps a temp mailbox active for approximately 1 hour after last use. Messages are typically retained for at least 60 minutes. For most use cases â€” verifying a signup, receiving a download link, or grabbing a coupon code â€” this window is more than sufficient. If you need a burner email address or throwaway email for longer, simply keep the TempMail Cart tab open and continue polling; activity resets the timer on many providers.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item" id="faq-2">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-2">
+            <span>Can I send emails from a disposable address?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer" id="faq-answer-2" role="region">
+            No â€” TempMail Cart is a <em>receive-only</em> service. The disposable addresses are configured to accept incoming mail but are not connected to an outbound SMTP server. This is by design: it keeps the service simple, fast, and anonymous. If you need two-way communication, consider services that offer both inbound and outbound disposable messaging, though those services typically require more complex setup and may retain logs.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item" id="faq-3">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-3">
+            <span>Is using a disposable email address legal?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer" id="faq-answer-3" role="region">
+            Yes â€” using a disposable email address is entirely legal in virtually every jurisdiction. Protecting your personal data and choosing which services you share your contact information with is a fundamental digital right. Many data protection laws, including GDPR in Europe and CCPA in California, explicitly support the principle of data minimisation â€” only sharing what is strictly necessary. However, you should not use disposable addresses to circumvent terms of service that you have explicitly agreed to, impersonate another person, or engage in any fraudulent activity.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item" id="faq-4">
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-answer-4">
+            <span>Why does TempMail Cart route requests through its own server?</span>
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="faq-answer" id="faq-answer-4" role="region">
+            For security and reliability reasons. By proxying all requests through our FastAPI backend rather than calling the underlying mail API directly from your browser, we achieve several important goals: (1) we can sanitize all incoming email HTML to remove malicious scripts before it ever reaches your screen; (2) we can enforce rate-limiting and input validation to prevent abuse; (3) we can add monitoring and error handling without exposing third-party API endpoints to end users; and (4) we can switch or augment the underlying mail provider in the future without changing any frontend code. This architecture is a deliberate security-first design choice.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Security / How It Works section -->
+    <div class="glass-card p-8 mb-6">
+      <h2>How TempMail Cart Keeps You Safe</h2>
+      <p>
+        Security is built into every layer of TempMail Cart. Email is one of the oldest and most exploited attack vectors on the internet â€” phishing links, malicious attachments, CSS-based tracking pixels, and JavaScript-based exploits are all routinely delivered via email HTML. We take this seriously.
+      </p>
+      <ul class="space-y-2 list-disc pl-5 mt-3">
+        <li>All email content is passed through a <strong>two-pass HTML sanitizer</strong> on our server: first a regex layer that nukes script tags, iframe embeds, and inline event handlers, then a strict allowlist via the <code style="color:var(--accent);font-size:0.85em">bleach</code> library that only permits safe, display-oriented HTML elements.</li>
+        <li><strong>No cookies, no accounts, no logs</strong> â€” we do not store your generated email address, your inbox contents, or your IP address in any persistent database.</li>
+        <li>Your browser never makes direct API calls to third-party services. Every request routes through our backend, preventing credential exposure and enabling consistent rate-limiting.</li>
+        <li>All rendered email bodies are displayed in a sandboxed modal overlay â€” even if a sanitizer edge case were somehow exploited, the content is visually isolated from the rest of the page.</li>
+        <li>Input validation is performed server-side on all API parameters before they are used in upstream requests, preventing injection attacks.</li>
+      </ul>
+    </div>
+
+  </section>
+</main>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     FOOTER
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<footer style="border-top:1px solid rgba(99,102,241,0.15);padding:40px 24px;text-align:center">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <img src="/static/tempmail_cart_icon.png" alt="TempMail Cart Logo" style="width:28px;height:28px;border-radius:7px;object-fit:cover;" />
+      <span class="font-bold" style="color:var(--text-primary)">TempMail Cart</span>
+    </div>
+    <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:16px">
+      Free disposable email addresses for everyone. No registration. No spam. No tracking.
+    </p>
+    <div class="flex items-center justify-center gap-6 text-sm" style="color:var(--text-muted)">
+      <a href="/about" style="color:var(--text-muted);text-decoration:none" class="hover:text-primary transition-colors">About Us</a>
+      <span>·</span>
+      <a href="/privacy" style="color:var(--text-muted);text-decoration:none" class="hover:text-primary transition-colors">Privacy Policy</a>
+      <span>·</span>
+      <a href="/terms" style="color:var(--text-muted);text-decoration:none" class="hover:text-primary transition-colors">Terms of Service</a>
+      <span>·</span>
+      <span>© 2025 TempMail Cart</span>
+    </div>
+    <p style="color:var(--text-muted);font-size:0.72rem;margin-top:16px;opacity:0.6">
+      TempMail Cart is an independent service. Powered by 1secmail API. Not affiliated with any email provider.
+    </p>
+  </div>
+</footer>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     EMAIL MODAL OVERLAY
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div id="email-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-subject">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div style="flex:1;min-width:0">
+        <div id="modal-subject" class="font-bold text-base mb-1" style="color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">(Loadingâ€¦)</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary)">
+          <span>From: </span><span id="modal-from" style="color:var(--accent)"></span>
+          <span class="mx-2">Â·</span>
+          <span id="modal-date" style="color:var(--text-muted)"></span>
+        </div>
+      </div>
+      <button id="modal-close" class="flex-shrink-0 rounded-full p-2 transition-colors" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer" aria-label="Close email viewer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modal-body-content">
+      <!-- Email content rendered here -->
+    </div>
+  </div>
+</div>
+
+<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+     TOAST NOTIFICATION
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<div id="toast" class="toast" role="alert" aria-live="assertive"></div>
+
+<!-- JS -->
+<script src="/static/js/main.js?v=1.0.3"></script>
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — TempMail Cart</title>
+  <link rel="icon" type="image/png" href="/static/tempmail_cart_icon.png" />
+  <meta name="description" content="Learn about TempMail Cart, our mission, the technology behind our anonymous burner email address generator, and how we protect your personal inbox privacy." />
+  <meta name="keywords" content="about tempmail cart, temporary email mission, disposable email privacy, secure burner email, who made tempmail cart" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tempmailcart.com/about" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#c8f400',
+            accent: '#d4ff1a',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="sticky top-0 z-50 border-b border-lime-900/20" style="background:rgba(11,13,8,0.88);backdrop-filter:blur(20px)">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 no-underline">
+      <img src="/static/tempmail_cart_icon.png" alt="TempMail Cart Logo" style="width:32px;height:32px;border-radius:8px;object-fit:cover;" />
+      <span class="font-bold text-lg" style="color:var(--text-primary)">TempMail <span style="color:var(--accent)">Cart</span></span>
+    </a>
+    <div class="flex items-center gap-4 text-sm" style="color:var(--text-secondary)">
+      <a href="/" class="hover:text-primary transition-colors">← Back to App</a>
+      <a href="/about" class="hover:text-primary transition-colors" style="color:var(--accent)">About</a>
+      <a href="/privacy" class="hover:text-primary transition-colors">Privacy</a>
+      <a href="/terms" class="hover:text-primary transition-colors">Terms</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Ad Slot Header (Compliant buffer spacing) -->
+<div class="max-w-3xl mx-auto px-4 mt-6">
+  <div id="ad-about-header" class="ad-slot w-full" style="height:90px;min-height:60px;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span class="ad-slot-label">Advertisement · Header Banner</span>
+  </div>
+</div>
+
+<main class="max-w-3xl mx-auto px-4 py-12 compliance-content" id="about-us-container">
+  <div class="glass-card p-10">
+
+    <h1 style="background:linear-gradient(135deg,#eef0e6,#c8f400);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+      About TempMail Cart
+    </h1>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:32px">
+      Our Mission · Technology · Security Commitment
+    </p>
+
+    <h2>Who We Are & Our Mission</h2>
+    <p>
+      At <strong>TempMail Cart</strong>, we believe that digital privacy should not be a luxury reserved for tech-savvy individuals or those who can afford expensive premium subscriptions. Every single day, internet users are forced to hand over their personal email addresses just to read an article, download a PDF, register for a forum, or get a one-time discount code.
+    </p>
+    <p>
+      This trade-off has a high price: spam, promotional tracking, data leaks, and persistent marketing campaigns that clutter your real inbox. We built TempMail Cart to act as your digital shield. Our mission is simple: <strong>to give everyone instant access to free, secure, and disposable burner email addresses in a single click, keeping personal inbox hygiene clean and spam-free.</strong>
+    </p>
+
+    <h2>The Problem with Modern Email Signups</h2>
+    <p>
+      Historically, your email address is your digital passport. Once an advertising platform or malicious actor links your real email address to your browser identity, they can track your behavior across multiple sites and build a profile on you. In the event of a database breach (which happens to thousands of companies annually), your real email address and potential passwords are leaked to the dark web, opening you up to credential stuffing and phishing attacks.
+    </p>
+    <p>
+      TempMail Cart completely cuts this threat at the root. By using our temporary email addresses, you interact anonymously. When a website requires an verification email, you provide your TempMail Cart username, verify your account, grab what you need, and throw the mailbox away. Your real email address remains safe, secret, and secure.
+    </p>
+
+    <!-- Ad Slot Midpage (Compliant buffer spacing) -->
+    <div id="ad-about-mid" class="ad-slot w-full my-8" style="height:90px;min-height:60px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.4"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      <span class="ad-slot-label">Advertisement · Midpage Banner</span>
+    </div>
+
+    <h2>Under the Hood: Our Security Infrastructure</h2>
+    <p>
+      Unlike generic, basic throwaway inbox generators, TempMail Cart is engineered with a **security-first server architecture** built on FastAPI:
+    </p>
+    <ul>
+      <li><strong>Server-Side Proxying:</strong> Your browser never communicates directly with third-party mail providers. We proxy all API queries through our backend, protecting your IP address and credentials.</li>
+      <li><strong>Two-Pass HTML Sanitization:</strong> Incoming emails can contain malicious scripts, XSS vectors, and tracking pixels. We run all email HTML through a strict two-pass filter—first a pattern-nuking regex, and then a strict tag and attribute allowlist powered by Python's <code style="color:var(--accent);font-size:0.85em">bleach</code> library.</li>
+      <li><strong>Zero Logs Policy:</strong> We do not run databases storing your temporary inboxes. When you close the page or refresh your address, all past data is gone forever, leaving no trail.</li>
+      <li><strong>Smart Fallbacks:</strong> We connect to premium email APIs (like 1secmail) for robust email routing, and automatically fall back to alternative private domains (like catchmail.io) if the primary provider faces downtime, ensuring your tests never stop.</li>
+    </ul>
+
+    <h2>Our Ad-Supported Model</h2>
+    <p>
+      Providing a high-performance email server proxy with real-time sanitization and high-speed auto-refreshes costs money. To keep this service 100% free for developers, QA testers, and privacy advocates worldwide, we partner with **Google AdSense** to show non-intrusive ads.
+    </p>
+    <p>
+      We value your user experience. We strictly enforce Google AdSense policies by ensuring all advertising slots are clearly separated from action buttons and interactive features by a buffer of at least 80 pixels. This prevents accidental clicks and ensures that your layout remains readable, fluid, and premium.
+    </p>
+
+    <h2>Frequently Asked Questions</h2>
+    <p><strong>Who operates TempMail Cart?</strong></p>
+    <p>
+      We are a small, dedicated team of developers, privacy researchers, and security advocates. We built this tool out of our own daily needs for clean development sandboxes and private online registrations.
+    </p>
+    <p><strong>Is my data shared?</strong></p>
+    <p>
+      Absolutely not. We do not require sign-up, collect names, passwords, or log email bodies. Your temporary messages exist in memory while you read them, and vanish completely when the mailbox is discarded.
+    </p>
+
+    <h2>Contact Us</h2>
+    <p>
+      For technical inquiries, bug reports, feature requests, or general support, you can reach our team directly at <a href="mailto:support@tempmailcart.com" style="color:var(--accent);font-weight:600">support@tempmailcart.com</a>. We endeavor to respond to all inquiries within 48 hours.
+    </p>
+
+  </div>
+</main>
+
+<footer style="border-top:1px solid rgba(200,244,0,0.15);padding:32px 24px;text-align:center;margin-top:40px">
+  <div class="flex items-center justify-center gap-6 text-sm" style="color:var(--text-muted)">
+    <a href="/" style="color:var(--text-muted);text-decoration:none" class="hover:text-primary transition-colors">Home</a>
+    <span>·</span>
+    <a href="/about" style="color:var(--accent);text-decoration:none">About Us</a>
+    <span>·</span>
+    <a href="/privacy" style="color:var(--text-muted);text-decoration:none" class="hover:text-primary transition-colors">Privacy Policy</a>
+    <span>·</span>
+    <a href="/terms" style="color:var(--text-muted);text-decoration:none" class="hover:text-primary transition-colors">Terms of Service</a>
+  </div>
+  <p style="color:var(--text-muted);font-size:0.72rem;margin-top:12px;opacity:0.6">© 2025 TempMail Cart. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
