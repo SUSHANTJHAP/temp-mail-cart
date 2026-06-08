@@ -13,8 +13,8 @@ const state = {
   pollingTimer: null,
   countdownTimer: null,
   seenIds: new Set(),
-  pollInterval: 7,        // seconds
-  countdownLeft: 7,
+  pollInterval: 3,        // seconds
+  countdownLeft: 3,
 };
 
 // ── DOM refs ───────────────────────────────────────────────────────────────────
