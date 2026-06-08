@@ -9,6 +9,7 @@ import bleach
 import logging
 import secrets
 import string
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -17,16 +18,6 @@ from fastapi.templating import Jinja2Templates
 # ── Logging ───────────────────────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
-
-# ── App init ──────────────────────────────────────────────────────────────────
-app = FastAPI(
-    title="TempMail Cart",
-    description="Disposable email address service powered by 1secmail.",
-    version="1.0.0",
-)
-
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
 
 # ── 1secmail base URL & shared headers ───────────────────────────────────────
 MAIL_API = "https://www.1secmail.com/api/v1/"
@@ -42,6 +33,29 @@ BROWSER_HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
     "Referer": "https://www.1secmail.com/",
 }
+
+# Global HTTP client
+http_client = None
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global http_client
+    http_client = httpx.AsyncClient(timeout=10, headers=BROWSER_HEADERS)
+    yield
+    await http_client.aclose()
+
+# ── App init ──────────────────────────────────────────────────────────────────
+app = FastAPI(
+    title="TempMail Cart",
+    description="Disposable email address service powered by 1secmail.",
+    version="1.0.0",
+    lifespan=lifespan,
+)
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
+
 
 # ── Allowed HTML tags for body rendering ─────────────────────────────────────
 ALLOWED_TAGS = [
@@ -151,16 +165,15 @@ async def new_email():
     it automatically falls back to generating a catchmail.io address server-side.
     """
     try:
-        async with httpx.AsyncClient(timeout=10, headers=BROWSER_HEADERS) as client:
-            resp = await client.get(MAIL_API, params={"action": "genRandomMailbox", "count": 1})
-            resp.raise_for_status()
-            data = resp.json()
-            if not data:
-                raise ValueError("Empty response from 1secmail")
-            address: str = data[0]
-            username, domain = address.split("@")
-            logger.info(f"Generated new address via 1secmail: {address}")
-            return {"email": address, "username": username, "domain": domain}
+        resp = await http_client.get(MAIL_API, params={"action": "genRandomMailbox", "count": 1})
+        resp.raise_for_status()
+        data = resp.json()
+        if not data:
+            raise ValueError("Empty response from 1secmail")
+        address: str = data[0]
+        username, domain = address.split("@")
+        logger.info(f"Generated new address via 1secmail: {address}")
+        return {"email": address, "username": username, "domain": domain}
     except Exception as exc:
         logger.warning(f"1secmail email generation failed ({exc}). Falling back to catchmail.io...")
         # Fallback to catchmail.io
@@ -187,33 +200,31 @@ async def check_inbox(username: str, domain: str):
     if domain == "catchmail.io":
         try:
             url = f"https://api.catchmail.io/api/v1/mailbox"
-            async with httpx.AsyncClient(timeout=10, headers=BROWSER_HEADERS) as client:
-                resp = await client.get(url, params={"address": f"{username}@{domain}"})
-                resp.raise_for_status()
-                data = resp.json()
-                catchmail_messages = data.get("messages", [])
-                mapped_messages = []
-                for msg in catchmail_messages:
-                    mapped_messages.append({
-                        "id": msg.get("id"),
-                        "from": msg.get("from"),
-                        "subject": msg.get("subject"),
-                        "date": msg.get("date"),
-                    })
-                return {"messages": mapped_messages, "count": len(mapped_messages)}
+            resp = await http_client.get(url, params={"address": f"{username}@{domain}"})
+            resp.raise_for_status()
+            data = resp.json()
+            catchmail_messages = data.get("messages", [])
+            mapped_messages = []
+            for msg in catchmail_messages:
+                mapped_messages.append({
+                    "id": msg.get("id"),
+                    "from": msg.get("from"),
+                    "subject": msg.get("subject"),
+                    "date": msg.get("date"),
+                })
+            return {"messages": mapped_messages, "count": len(mapped_messages)}
         except Exception as exc:
             logger.error(f"Catchmail inbox check error: {exc}")
             raise HTTPException(status_code=502, detail="Failed to fetch inbox from fallback service.")
     else:
         try:
-            async with httpx.AsyncClient(timeout=10, headers=BROWSER_HEADERS) as client:
-                resp = await client.get(
-                    MAIL_API,
-                    params={"action": "getMessages", "login": username, "domain": domain},
-                )
-                resp.raise_for_status()
-                messages = resp.json()
-                return {"messages": messages, "count": len(messages)}
+            resp = await http_client.get(
+                MAIL_API,
+                params={"action": "getMessages", "login": username, "domain": domain},
+            )
+            resp.raise_for_status()
+            messages = resp.json()
+            return {"messages": messages, "count": len(messages)}
         except Exception as exc:
             logger.error(f"1secmail inbox check error: {exc}")
             raise HTTPException(status_code=502, detail="Failed to fetch inbox.")
@@ -235,10 +246,9 @@ async def get_message(username: str, domain: str, msg_id: str):
             raise HTTPException(status_code=400, detail="Invalid message ID format.")
         try:
             url = f"https://api.catchmail.io/api/v1/message/{msg_id}"
-            async with httpx.AsyncClient(timeout=10, headers=BROWSER_HEADERS) as client:
-                resp = await client.get(url, params={"mailbox": f"{username}@{domain}"})
-                resp.raise_for_status()
-                msg = resp.json()
+            resp = await http_client.get(url, params={"mailbox": f"{username}@{domain}"})
+            resp.raise_for_status()
+            msg = resp.json()
             
             body_data = msg.get("body", {})
             mapped_msg = {
@@ -261,18 +271,17 @@ async def get_message(username: str, domain: str, msg_id: str):
         if not re.match(r"^\d+$", msg_id):
             raise HTTPException(status_code=400, detail="Invalid message ID format.")
         try:
-            async with httpx.AsyncClient(timeout=10, headers=BROWSER_HEADERS) as client:
-                resp = await client.get(
-                    MAIL_API,
-                    params={
-                        "action": "readMessage",
-                        "login": username,
-                        "domain": domain,
-                        "id": int(msg_id),
-                    },
-                )
-                resp.raise_for_status()
-                msg = resp.json()
+            resp = await http_client.get(
+                MAIL_API,
+                params={
+                    "action": "readMessage",
+                    "login": username,
+                    "domain": domain,
+                    "id": int(msg_id),
+                },
+            )
+            resp.raise_for_status()
+            msg = resp.json()
 
             # Sanitize both HTML and plain-text body fields
             if msg.get("htmlBody"):
