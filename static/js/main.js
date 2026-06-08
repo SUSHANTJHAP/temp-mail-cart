@@ -293,8 +293,8 @@ function renderInbox(messages) {
       <div style="font-size:0.82rem;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:6px">
         ${escHtml(truncate(msg.subject || "(No Subject)", 60))}
       </div>
-      <div class="flex items-center justify-between flex-wrap gap-2 mt-2">
-        <div class="flex gap-2">
+      <div class="flex items-center justify-between flex-wrap gap-2 mt-2" id="msg-actions-${msg.id}">
+        <div class="flex gap-2" id="msg-badges-${msg.id}">
           ${isNew ? '<span style="font-size:0.65rem;background:rgba(34,211,238,0.15);color:var(--accent);padding:2px 8px;border-radius:10px;font-weight:600">NEW</span>' : ""}
           ${otp ? '<span style="font-size:0.65rem;background:rgba(16,185,129,0.15);color:var(--success);padding:2px 8px;border-radius:10px;font-weight:600">OTP</span>' : ""}
         </div>
@@ -323,6 +323,34 @@ function renderInbox(messages) {
 
     // Prepend new items to top
     elInboxList.prepend(item);
+
+    // If we didn't find an OTP in the subject, fetch the body in the background
+    if (isNew && !otp) {
+      fetch(`/api/message/${state.username}/${state.domain}/${msg.id}`)
+        .then(res => res.ok ? res.json() : null)
+        .then(fullMsg => {
+          if (fullMsg) {
+             const bodyOtp = extractOTP(fullMsg.subject, fullMsg.htmlBody || fullMsg.body);
+             if (bodyOtp) {
+               const badgesDiv = document.getElementById(`msg-badges-${msg.id}`);
+               const actionsDiv = document.getElementById(`msg-actions-${msg.id}`);
+               if (badgesDiv && actionsDiv) {
+                 badgesDiv.insertAdjacentHTML('beforeend', '<span style="font-size:0.65rem;background:rgba(16,185,129,0.15);color:var(--success);padding:2px 8px;border-radius:10px;font-weight:600">OTP</span>');
+                 const btn = document.createElement("button");
+                 btn.className = "btn-otp-copy-inbox";
+                 btn.setAttribute("data-otp", bodyOtp);
+                 btn.setAttribute("aria-label", "Copy OTP " + bodyOtp);
+                 btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy Code (${bodyOtp})`;
+                 btn.addEventListener("click", (e) => {
+                   e.stopPropagation();
+                   copyText(bodyOtp, "OTP copied: " + bodyOtp);
+                 });
+                 actionsDiv.appendChild(btn);
+               }
+             }
+          }
+        }).catch(err => console.error("Background OTP fetch failed:", err));
+    }
   });
 }
 
